@@ -10,7 +10,7 @@ module.exports = (sequelize, dataTypes)=>{
             autoIncrement: true
         },
         texto: {
-            type: dataTypes.STRING,
+            type: dataTypes.TEXT,
             allowNull: false
         },
         usuarios_id: {
