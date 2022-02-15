@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes)=>{
-    return sequelize.define('Post', {
+    const post = sequelize.define('Post', {
         id: {
             type: dataTypes.INTEGER,
             primaryKey:true,
@@ -25,5 +25,14 @@ module.exports = (sequelize, dataTypes)=>{
     },{
         tableName: 'posts',
         timestamps:false
-    })
+      }
+    )
+
+    post.associate = (models)=>{
+        post.hasMany(models.Comentario, {foreignKey:'posts_id', as: 'comentarios'})
+        
+    }
+
+
+    return post
 }
