@@ -1,7 +1,7 @@
 module.exports = (sequelize, dataTypes)=>{
     
     
-    return sequelize.define(
+    const comentario = sequelize.define(
         'Comentario', 
     {
         id: {
@@ -27,4 +27,9 @@ module.exports = (sequelize, dataTypes)=>{
         timestamps: false
     }
 )
+
+    comentario.associate = (models)=>{
+        comentario.belongsTo(models.Post, {foreignKey: 'posts_id', as: 'post'})
+    }
+    return comentario;
 }
