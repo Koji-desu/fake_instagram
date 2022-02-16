@@ -1,8 +1,10 @@
 const { sequelize, Comentario } = require('../models');
 
-Comentario.findAll({includes: 'post'}).then(
-    data => {
-        console.log(data.map( u => u.toJSON()));
-        sequelize.close();
-    }
-)
+let promessa = Comentario.findAll({include:'post'});
+
+    promessa.then(
+        dados => {
+            console.log(dados.map(c=>c.toJSON()));
+            sequelize.close();
+        }
+    )
