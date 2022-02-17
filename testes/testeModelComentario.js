@@ -1,6 +1,6 @@
 const { sequelize, Comentario } = require('../models');
 
-let promessa = Comentario.findAll({include:'post'});
+let promessa = Comentario.findAll({include:['post', 'usuario']});
 
     promessa.then(
         dados => {
