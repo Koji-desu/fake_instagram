@@ -1,4 +1,4 @@
-const { Usuario} = require('../models')
+const { Usuario } = require('../models')
 const AuthController = {
     
     showLogin: (req,res) => {
@@ -12,12 +12,14 @@ const AuthController = {
     showHome: (req,res) => {
         res.render('index');
     },
-    addRegistro: (req,res)=>{
+    addRegistro: async (req,res)=>{
         let{ nome, email, senha} = req.body
 
-        Usuario.create({
+        let usuario = await Usuario.create({
             nome, email, senha
         })
+
+        res.redirect('/home')
     }
 
 
