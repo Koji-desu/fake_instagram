@@ -1,3 +1,4 @@
+const { Usuario} = require('../models')
 const AuthController = {
     
     showLogin: (req,res) => {
@@ -10,6 +11,13 @@ const AuthController = {
 
     showHome: (req,res) => {
         res.render('index');
+    },
+    addRegistro: (req,res)=>{
+        let{ nome, email, senha} = req.body
+
+        Usuario.create({
+            nome, email, senha
+        })
     }
 
 
